@@ -1,0 +1,52 @@
+
+
+<div>
+    <div class="row">
+        <div class="col mb-3">
+            <label for="role" class="form-label">Role</label>
+            <select id="role" name="role" class="form-select"  (change)="onFilter($event)">
+            <option value="">All</option>
+            <option value="hr">HR</option>
+            <option value="candidate">Candidate</option>
+            <option value="tech_lead">Tech Lead</option>
+            </select>
+        </div>
+
+        <div class="col mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <select id="gender" name="gender" class="form-select" (change)="onFilter($event)">
+            <option value="">All</option>
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>SR No</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Mobile</td>
+            <td>Gender</td>
+            <td>Role</td>
+            <td>Total Addresses</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of allUsers; let userIndex = index">
+            <td>{{userIndex+1}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.number}}</td>
+            <td>{{user.gender === 'm' ? 'Male' : 'Female'}}</td>
+            <td class="text-uppercase">{{user.role === 'tech_lead' ? 'Tech Lead' : user.role}}</td>
+            <td class="text-center">{{user.addresses.length}}</td>
+            <td> <a href="/users/{{user.id}}">Edit</a> | <button (click)="onClone(user)">Clone</button> | <button (click)="onDelete(user.id)">Delete</button></td>
+
+        </tr>
+    </tbody>
+</table>

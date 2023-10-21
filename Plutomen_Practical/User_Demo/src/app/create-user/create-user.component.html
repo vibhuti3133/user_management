@@ -1,0 +1,91 @@
+
+  
+<form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+    <div class="row g-0">
+        <div class="col text-center p-2 mb-3 bg-light">
+            <div class="fs-3">{{editUser ? 'Edit' : 'Create'}} User</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name" value="name"> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email"  formControlName="email" value="email">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-mb-3">
+            <label for="number" class="form-label">Mobile Number</label>
+            <input type="text" class="form-control" id="number" formControlName="number" maxlength="10" (keypress)="numberOnly($event)"  >
+            <div class="form-text"></div>
+        </div>
+        <div class="col ps-3 mb-3">
+            <div class="m-1">Gender</div>
+            <div class="form-check form-check-inline" >
+                <input type="radio" class="form-check-input" value="m" id="male" name="gender" formControlName="gender">
+                <label for="male" class="form-check-label">Male</label>
+            </div>
+            <div class="form-check form-check-inline" >
+                <input type="radio" class="form-check-input" value="f" id="female" name="gender" formControlName="gender">
+                <label for="female" class="form-check-label">Female</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-3">
+            <label for="role" class="form-label">Choose a Role</label>
+            <select id="role" name="role" class="form-select" formControlName="role">
+            <option value="hr">HR</option>
+            <option value="candidate">Candidate</option>
+            <option value="tech_lead">Tech Lead</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row " formArrayName="address">
+      <div class="border p-3 mb-3" *ngFor="let address of [].constructor(total_addresses); let address_number = index" >
+        <label for="street" class="form-label d-flex justify-content-between align-items-center"> Address {{address_number+1}}  </label>
+        <div formGroupName="{{address_number}}">
+          <div class="col mb-6">
+              <input type="text" class="form-control" id="street" formControlName="street">
+          </div>
+          <div class="row">
+              <div class="row">
+                  <div class="col mb-3">
+                      <label for="zip" class="form-label">Zip Code</label>
+                      <input type="text" class="form-control" id="zip" formControlName="zip" (keypress)="numberOnly($event)"  maxlength="6">
+                  </div>
+                  <div class="col mb-3">
+                      <label for="city" class="form-label">City</label>
+                      <input type="text" class="form-control" id="city" formControlName="city">
+                  </div>
+              </div>
+              
+              <div class="row">
+                  <div class="col mb-3">
+                      <label for="state" class="form-label">State</label>
+                      <input type="text" class="form-control" id="state" formControlName="state">
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <button  type="button" class="btn btn-link" (click)=totalAddressNumber(); >Add +</button>
+
+    </div>
+
+    
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>

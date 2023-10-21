@@ -1,0 +1,30 @@
+{
+    "countries": [
+      {
+        "id": "1",
+        "name": "Country 1"
+      },
+      {
+        "id": "2",
+        "name": "Country 2"
+      }
+    ],
+    "states": [
+      {
+        "id": "1",
+        "countryId": "1",
+        "name": "State 1"
+      },
+      {
+        "id": "2",
+        "countryId": "1",
+        "name": "State 2"
+      },
+      {
+        "id": "3",
+        "countryId": "2",
+        "name": "State 3"
+      }
+    ]
+  }
+  

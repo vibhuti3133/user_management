@@ -1,0 +1,14 @@
+
+
+
+<div class="h-100 min-vh-100 overflow-auto w-100">
+  <!-- <app-create-user></app-create-user> -->
+  <nav class="w-100 d-flex justify-content-center py-2 gap-3">
+    <a  [routerLink]="['/users']">Dashboard</a>
+    <a  [routerLink]="['/users/add']">Create User</a>
+  </nav>
+  <main class=" container w-100 overflow-auto h-100">
+    <router-outlet></router-outlet>
+  </main>
+<!-- <app-root></app-root> -->
+</div>
